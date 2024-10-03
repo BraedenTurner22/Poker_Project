@@ -19,11 +19,10 @@ public class deck {
     }
 
     public ArrayList<card> createDeck(){
-        String suitArray[] = {"spades", "clubs", "diamonds", "hearts"};
-        String rankArray[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"};
-        for(String suit : suitArray) {
-            for (String rank : rankArray) {
-                deck.add(new card(rank, suit));
+
+        for(card.suit suit : suit.values()) {
+            for (card.rank rank : rank.values()) {
+                deck.add(new card(suit, rank));
             }
         }
         return deck;

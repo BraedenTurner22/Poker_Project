@@ -10,12 +10,12 @@ public class player {
     private double betSize;
     private Boolean isTurn;
 
-    public player(String name, int position, double money, Boolean isTurn, double betSize) {
+    public player(String name, int position, double money) {
         this.name = name;
         this.position = position;
         this.userCards = new ArrayList<card>();
         this.money = money;
-        this.isTurn = isTurn;
+        this.isTurn = false;
         this.betSize = 0;
     }
     
