@@ -1,36 +1,33 @@
 package game;
 import java.util.ArrayList;
 
+import game.player.handRank;
+
 public class gameState {
     
+    private static deck deck = new deck();
     private ArrayList<player> players;
-    private ArrayList<card> board;
-    private deck deck;
+    private static ArrayList<card> board;
     private double pot;
     private String gameState;
 
-    public gameState(ArrayList<player> players, deck deck) {
-        this.players = players;
-        this.board = new ArrayList<card>();
-        this.deck = deck;
-        this.pot = 0;
-        this.gameState = "pre-flop";
-    }
+    // public gameState(ArrayList<player> players) {
+    //     this.players = players;
+    //     board = new ArrayList<card>();
+    //     this.pot = 0;
+    //     this.gameState = "pre-flop";
+    // }
 
     public ArrayList<player> getPlayers() {
         return players;
     }
 
-    public ArrayList<card> getBoard() {
+    public static ArrayList<card> getBoard() {
         return board;
     }
 
-    public deck getDeck() {
+    public static deck getDeck() {
         return deck;
-    }
-
-    public void makeDeck(deck deck) {
-        this.deck = deck;
     }
 
     public double getPot() {
@@ -42,10 +39,46 @@ public class gameState {
     }
 
     public void dealCards() {
+        deck.shuffleDeck();
         for (int i = 0; i < 2; i++) {
             for (player player : players) {
-                player.addPlayerCard();
+                player.addPlayerCard(deck.getTopCard());
             }
         }
     }
+
+    public void dealFlop() {
+        for(int i = 0; i < 3; i++) {
+            board.add(deck.getTopCard());
+        }
+    }
+
+    public void dealTurn() {
+        board.add(deck.getTopCard());
+    }
+
+    public void dealRiver() {
+        board.add(deck.getTopCard());
+    }
+
+    public void suitCounter(ArrayList<card> allCards) {
+
+    }
+
+    public void determineHandRank(ArrayList<card> board, player player) {
+
+        handRank playerHandRank = null;
+        ArrayList<card> allCards = new ArrayList<card>();
+        allCards.addAll(board);
+        allCards.addAll(player.getCards());
+        int heartCount;
+        int diamondCount;
+        int clubCount;
+        int spadeCount;
+
+        for (card card : allCards) {
+            
+        }
+    }
+
 }

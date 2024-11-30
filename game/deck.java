@@ -1,6 +1,8 @@
 package game;
 import java.util.ArrayList;
 import java.util.Collections;
+import game.card.rank;
+import game.card.suit;
 
 public class deck {
 
@@ -18,6 +20,12 @@ public class deck {
         Collections.shuffle(deck);
     }
 
+    public card getTopCard(){
+        card topCard = deck.get(0);
+        deck.remove(0);
+        return topCard;
+    }
+
     public ArrayList<card> createDeck(){
 
         for(card.suit suit : suit.values()) {
@@ -27,4 +35,5 @@ public class deck {
         }
         return deck;
     }
+    
 }
