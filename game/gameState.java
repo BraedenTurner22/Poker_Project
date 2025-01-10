@@ -1,6 +1,9 @@
 package game;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 
+import game.card.rank;
 import game.player.handRank;
 
 public class gameState {
@@ -71,12 +74,21 @@ public class gameState {
         ArrayList<card> allCards = new ArrayList<card>();
         allCards.addAll(board);
         allCards.addAll(player.getCards());
-        int heartCount;
-        int diamondCount;
-        int clubCount;
-        int spadeCount;
-
-        for (card card : allCards) {
+        boolean containsRoyalFlush = false;
+// Figure out how to pass in royal flush hands into containsAll() method
+// as I iterate through the suits
+        for (card.suit suit : card.suit.values()) {
+            ArrayList<card> royalFlush = new ArrayList<>();
+            royalFlush.add(new card(suit, rank.TEN));
+            royalFlush.add(new card(suit, rank.JACK));
+            royalFlush.add(new card(suit, rank.QUEEN));
+            royalFlush.add(new card(suit, rank.KING));
+            royalFlush.add(new card(suit, rank.ACE));
+            if (allCards.containsAll(royalFlush)) {
+                playerHandRank = handRank.RFLUSH;
+            }
+        }
+        for (card.suit suit: card.suit.values()) {
             
         }
     }
